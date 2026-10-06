@@ -102,7 +102,10 @@ export default function MetroHero({videoSrc = DEFAULT_VIDEO, title = 'JEVIN THAK
       }
     };
     const onMotion = () => {reduced=media.matches;if(reduced){release();target=progress=0;paint();}};
-    const onNavigate = () => {hasReleased=true;release();};
+    const onNavigate = (event:Event) => {
+      hasReleased=true;release();
+      if((event as CustomEvent<{id?:string}>).detail?.id==='home') {target=progress=0;paint();seek(0);}
+    };
     const frame = () => {
       if(locked) {progress+=(target-progress)*.18;paint();if(duration)seek(progress*duration);}
       raf=requestAnimationFrame(frame);

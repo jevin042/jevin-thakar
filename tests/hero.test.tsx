@@ -49,4 +49,13 @@ describe('hero navigation safety',()=>{
     const {container,unmount}=render(<MetroHero/>);load(container);fireEvent(window,new Event('portfolio:navigate'));
     expect(document.body.style.position).toBe('');unmount();expect(document.body.style.color).toBe('red');
   });
+  it('does not re-lock on programmatic scrolling after navigation',()=>{
+    const {container}=render(<MetroHero/>);load(container);fireEvent(window,new Event('portfolio:navigate'));fireEvent.scroll(window);
+    expect(document.body.style.position).toBe('');
+  });
+  it('resets the introduction when returning home',()=>{
+    const {container}=render(<MetroHero/>);load(container);fireEvent.click(screen.getByRole('button',{name:/Explore my work/}));
+    fireEvent(window,new CustomEvent('portfolio:navigate',{detail:{id:'home'}}));
+    expect((container.querySelector('.hero-title') as HTMLElement).style.opacity).toBe('1');
+  });
 });

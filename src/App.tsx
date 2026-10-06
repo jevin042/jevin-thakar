@@ -18,7 +18,7 @@ export default function App() {
     return ()=>observer.disconnect();
   },[]);
   const go = (event:MouseEvent<HTMLAnchorElement>,id:string) => {
-    event.preventDefault();setMenu(false);window.dispatchEvent(new Event('portfolio:navigate'));
+    event.preventDefault();setMenu(false);window.dispatchEvent(new CustomEvent('portfolio:navigate',{detail:{id}}));
     requestAnimationFrame(()=>{document.getElementById(id)?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});history.replaceState(null,'',`#${id}`);});
   };
   return <>
