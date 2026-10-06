@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jevin042.github.io/jevin-thakar/sitemap.xml
