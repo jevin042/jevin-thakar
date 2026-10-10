@@ -25,14 +25,14 @@ To add a shadcn component later: `npx shadcn@latest add button`. The React/TypeS
 
 ## Hero behavior
 
-Adapted from the user-supplied MetroHero reference. Wheel/touch input scrubs the city video while the body is pinned. Reaching the end and scrolling forward releases the page; returning into the hero re-engages it. The original example never released the page despite its introductory comment. This version adds a visible skip action, keyboard scrubbing and Escape, reduced-motion support, media-error/timeout fallback, exact body-style restoration and no duplicate touch listeners. Navigation can release the intro at any time. Props include video URL, title, tagline, signature and scrub distance. `components/ui/demo.tsx` shows standalone usage.
+The train introduction uses native video playback, with a local 1280px H.264 asset, fast-start metadata and a lightweight poster. It plays once when visible, pauses offscreen or in a background tab, respects reduced motion, and has pause/replay controls. Wheel, touch and keyboard scrolling stay native; no body lock, per-frame seeking or continuous JavaScript animation loop. The existing component path and props remain compatible. `scrubDistance` is retained as a deprecated prop. Navigation and the visible Explore button remain available before media loads.
 
 ## Content & assets
 
 - Professional history and education: the user's current [LinkedIn profile](https://www.linkedin.com/in/jevin-thakar-628871135/), verified October 6, 2026. Duplicate positions are consolidated in the portfolio.
 - Project scope: the user's GitHub repositories and published interfaces. Jinha is an independent completed project, September 2026 (user-confirmed). Its live conversations remain invite-only. MarketTrade source remains private.
 - Actual project screenshots are used for portfolio previews. MarketTrade uses a labelled illustrative visual, not a fabricated application screenshot.
-- City video: [user-supplied 21st.dev CDN asset](https://cdn.21st.dev/assets/mirror/21/21a77eac28eacbb7e142016eefeaa0b4a766619e51113629a3bc6df6af066c0f.mp4). Credit for the reference concept: [Guglielmo Giannattasio](https://www.guglielmogiannattasio.it). Hero fallback photography: [Unsplash image CDN](https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2000&q=85). Third-party assets retain their own terms; no licence over those assets is asserted here.
+- City video: [user-supplied 21st.dev CDN asset](https://cdn.21st.dev/assets/mirror/21/21a77eac28eacbb7e142016eefeaa0b4a766619e51113629a3bc6df6af066c0f.mp4). Credit for the reference concept: [Guglielmo Giannattasio](https://www.guglielmogiannattasio.it). Local train video and poster are optimized derivatives of that supplied asset. Third-party assets retain their own terms; no licence over those assets is asserted here.
 - Public searches returned conflicting dates and unsupported years-of-experience claims; they are deliberately excluded. No private contacts, keys, provider identifiers or client source code are included.
 
 ## Deployment
